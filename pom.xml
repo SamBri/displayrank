@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>DisplayRank</groupId>
   <artifactId>DisplayRank</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <packaging>war</packaging>
   <name>DisplayRankApp</name>
   <description>Enter reference number and receive a message
@@ -12,6 +12,26 @@
   
     <sourceDirectory>src</sourceDirectory>
     <plugins>
+    <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals><goal>copy</goal></goals>
+                    <configuration>
+                        <artifactItems>
+                            <artifactItem>
+                                <groupId>com.heroku</groupId>
+                                <artifactId>webapp-runner</artifactId>
+                                <version>9.0.30.0</version>
+                                <destFileName>webapp-runner.jar</destFileName>
+                            </artifactItem>
+                        </artifactItems>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
       <plugin>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.2.3</version>
