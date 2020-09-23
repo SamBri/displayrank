@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>DisplayRank</groupId>
   <artifactId>DisplayRank</artifactId>
-  <version>0.0.1</version>
+  <version>0.0.2</version>
   <packaging>war</packaging>
   <name>DisplayRankApp</name>
   <description>Enter reference number and know thy fate.</description>
@@ -18,7 +18,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
+        <version>3.8.1</version>
         <configuration>
           <release>14</release>
         </configuration>
