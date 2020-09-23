@@ -2,20 +2,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>DisplayRank</groupId>
   <artifactId>DisplayRank</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   <name>DisplayRankApp</name>
-  <description>Enter reference number and know thy fate.</description>
-  <dependencies>
-   <dependency>
-  <groupId>javax.servlet</groupId>
-  <artifactId>javax.servlet-api</artifactId>
-  <version>3.1.0</version>
-  <scope>provided</scope>
-</dependency>
-	  </dependencies>
- 
+  <description>Enter reference number and receive a message
+</description>
+
   <build>
+  
     <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
@@ -25,13 +19,20 @@
           <warSourceDirectory>WebContent</warSourceDirectory>
         </configuration>
       </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <release>14</release>
-        </configuration>
-      </plugin>
     </plugins>
-  </build>
+    </build>
+    <dependencies>
+     <dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>4.0.1</version>
+    <scope>provided</scope>
+</dependency>
+    </dependencies>
+   
+  <properties> 
+  
+  <maven.compiler.source>14</maven.compiler.source> 
+  <maven.compiler.target>14</maven.compiler.target> 
+</properties>
 </project>
