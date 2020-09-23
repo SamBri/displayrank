@@ -2,6 +2,7 @@ package gui;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.temporal.ValueRange;
 import java.util.HashMap;
 
 import javax.servlet.ServletException;
@@ -83,9 +84,16 @@ public class FirstClass extends HttpServlet {
 	    boolean firstClass = false;
 	    Object obj = new Object(); //object to clear dialog view
 	    try{
-		    String getStuRefNo = request.getParameter("reference-number");
-		    System.out.println(getStuRefNo);  //debug get request value
+	    	ValueRange stuRefRange = ValueRange.of(107001, 1070010);//range of acceptable student reference number
+		   
+	    	String getStuRefNo = request.getParameter("reference-number");
+	    	
+	    	System.out.println(getStuRefNo);  //debug get request value
 		    parseLong = Long.parseLong(getStuRefNo);
+			if(!stuRefRange.isValidValue(parseLong)) //if student reference number not in range then prompt user
+				out.println("<dialog open>\r\n"
+		    			+ "  <p>Acceptable Student Reference Number: <em>107001 - 1070010</em>.</p>\r\n"
+		    			+ "</dialog>");
 		    System.out.println("debug parseLong:" + parseLong);
 	    } catch(RuntimeException e) {
 	    	System.out.println("Runtime Exception thrown");
@@ -94,7 +102,6 @@ public class FirstClass extends HttpServlet {
 	    		//3.
 	    		System.out.println("Value:" + studentRefNo.get(parseLong));
 	    		obj = studentRefNo.get(parseLong); //save null
-	    		
 	    		firstClass = studentRefNo.get(parseLong) >= 70.00; //true for grades greater or equal to 70.00
 	    		System.out.println("Debug obj:"+obj);	
 	    	} catch(RuntimeException e) {
